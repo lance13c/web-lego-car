@@ -3,18 +3,27 @@
 
 */
 class VehicleService {
-  forward() {
+  forward(speed) {
+    const valid = speed != undefined &&
+                  speed <= 1 &&
+                  speed >= 0;
 
+    // Logic
+
+    return valid;
   }
 
-  backward() {
+  backward(speed) {
 
   }
 
   stop() {
 
   }
+
+  turn(dir) {
+
+  }
 }
 
-
-export default new VehicleService
+module.exports = new VehicleService();
