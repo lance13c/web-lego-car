@@ -1,0 +1,31 @@
+{
+  "name": "web-lego-car",
+  "version": "1.0.0",
+  "description": "Controlling a lego car via a webpage controller",
+  "main": "./src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-jasmine": "^1.0.2"
+  },
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lance13c/web-lego-car.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lance13c/web-lego-car/issues"
+  },
+  "homepage": "https://github.com/lance13c/web-lego-car#readme"
+}
