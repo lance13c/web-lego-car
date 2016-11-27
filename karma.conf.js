@@ -3,7 +3,8 @@ module.exports = function(config) {
         frameworks: ['jasmine'],
 
         files: [
-            './tests/**/*.js'
+            './node_modules/unirest/index.js',
+            'specs/**/*.js'
         ]
     })
 }

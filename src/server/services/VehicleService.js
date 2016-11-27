@@ -1,7 +1,4 @@
 
-/*
-
-*/
 class VehicleService {
 
 /**
@@ -52,8 +49,8 @@ class VehicleService {
    */
   turn(dir) {
     const valid = dir != undefined &&
-        speed <= 180 &&
-        speed >= 0;
+        dir <= 180 &&
+        dir >= 0;
 
     // Logic
 
@@ -69,8 +66,8 @@ class VehicleService {
    */
   turnOffset(dir) {
     const valid = dir != undefined &&
-        speed <= 180 &&
-        speed >= 0;
+        dir <= 180 &&
+        dir >= 0;
 
     // Logic
 

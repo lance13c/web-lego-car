@@ -20,7 +20,30 @@ app.post('/vehicle/forward', (req, res) => {
     res.send({complete: valid});
 });
 
+app.post('/vehicle/backward', (req, res) => {
+    console.log(req.body);
+    const valid = VehicleService.backward(req.body.speed);
+    res.send({complete: valid});
+});
+
+app.post('/vehicle/stop', (req, res) => {
+    console.log(req.body);
+    const valid = VehicleService.stop();
+    res.send({complete: valid});
+});
+
+app.post('/vehicle/turn', (req, res) => {
+    console.log(req.body);
+    const valid = VehicleService.turn(req.body.dir);
+    res.send({complete: valid});
+});
+
+app.post('/vehicle/turnoffset', (req, res) => {
+    console.log(req.body);
+    const valid = VehicleService.turnOffset(req.body.offset);
+    res.send({complete: valid});
+});
+
 app.listen(PORT, () => {
     console.log(`Listening Port ${PORT}`);
 });
-
