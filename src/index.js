@@ -8,11 +8,12 @@ const VehicleService = require('./server/services/VehicleService');
 const app = express();
 const PORT = 3000;
 
+app.use( bodyParser.json() );
+app.use( express.static('dist'));
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
-
-app.use( bodyParser.json() );
 
 app.post('/vehicle/forward', (req, res) => {
     console.log(req.body);

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lego Web Controller</title>
+    <link type="text/css" rel="stylesheet" href="./webapp/style.css">
 </head>
 <body>
     <h1>Lego Web Controller</h1>
@@ -10,8 +11,14 @@
     <div class="ce-controller">
         <input type="button" class="ce-btn-forward"/>
         <input type="button" class="ce-btn-backward"/>
+
+        <input type="button" id="ce-joystick">
+
+        </input>
     </div>
 
-    <script src="./webapp/app.js"></script>
+    <script src="./webapp/js/app.js"></script>
+    <script src="./dep/touchController/build/touchController.bundle.js"></script>
+    <script src="./webapp/js/controller.js"></script>
 </body>
 </html>
