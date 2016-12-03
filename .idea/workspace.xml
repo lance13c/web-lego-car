@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c430ad6-59c4-4dd5-9e67-47c1572c55de" name="Default" comment="add build npm script">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/webapp/assets/style.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/webapp/style.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="7c430ad6-59c4-4dd5-9e67-47c1572c55de" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/js/config.js" afterPath="$PROJECT_DIR$/src/webapp/js/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/webapp/js/controller.js" afterPath="$PROJECT_DIR$/src/webapp/js/controller.js" />
     </list>
     <ignored path="web-lego-car.iws" />
@@ -104,7 +98,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/webapp/js/config.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="102">
@@ -114,11 +108,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="controller.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="controller.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/webapp/js/controller.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="223">
-                  <caret line="245" column="6" lean-forward="false" selection-start-line="245" selection-start-column="6" selection-end-line="245" selection-end-column="6" />
+                <state relative-caret-position="461">
+                  <caret line="301" column="23" lean-forward="false" selection-start-line="301" selection-start-column="23" selection-end-line="301" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#42#0" expanded="false" />
                   </folding>
@@ -188,12 +182,12 @@
         <option value="$PROJECT_DIR$/src/server/services/VehicleService.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/dist/webapp/js/confit.js" />
-        <option value="$PROJECT_DIR$/src/webapp/js/controller.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/dist/webapp/js/config.js" />
         <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/src/webapp/js/config.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/webapp/js/controller.js" />
       </list>
     </option>
   </component>
@@ -501,7 +495,7 @@
       <workItem from="1480734169030" duration="470000" />
       <workItem from="1480734654389" duration="362000" />
       <workItem from="1480735116073" duration="8650000" />
-      <workItem from="1480787237170" duration="8961000" />
+      <workItem from="1480787237170" duration="9257000" />
     </task>
     <task id="LOCAL-00001" summary="add API docs">
       <created>1480198961035</created>
@@ -608,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480803759242</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add config to gitignore&#10;quick config and index changes">
+      <created>1480803857357</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1480803857357</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -635,7 +636,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52099000" />
+    <option name="totallyTimeSpent" value="52395000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -699,7 +700,8 @@
     <MESSAGE value="Finish UI&#10;Add Event Listeners For Inputs&#10;Add Event Throttling for REST requests" />
     <MESSAGE value="add build npm script" />
     <MESSAGE value="commit base webapp config file" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit base webapp config file" />
+    <MESSAGE value="add config to gitignore&#10;quick config and index changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add config to gitignore&#10;quick config and index changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1002,16 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/webapp/js/controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="245" column="6" lean-forward="false" selection-start-line="245" selection-start-column="6" selection-end-line="245" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/webapp/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1082,6 +1074,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/webapp/js/controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="301" column="23" lean-forward="false" selection-start-line="301" selection-start-column="23" selection-end-line="301" selection-end-column="23" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>

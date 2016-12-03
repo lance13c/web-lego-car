@@ -285,22 +285,22 @@ const controller = (() => {
 	// Back Button
 	btnBackward.addEventListener('touchstart', (e) => {
 		e.preventDefault();
-		postBackward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+		postBackward(CONFIG.url, DEFAULT_SPEED);
 	});
 	
 	btnBackward.addEventListener('touchend', (e) => {
 		e.preventDefault();
-		postBackward('http://megaman.student.rit.edu:3000', 0);
+		postBackward(CONFIG.url, 0);
 	});
 	
 	btnBackward.addEventListener('mousedown', (e) => {
 		e.preventDefault();
-		postBackward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+		postBackward(CONFIG.url, DEFAULT_SPEED);
 	});
 	
 	btnBackward.addEventListener('mouseup', (e) => {
 		e.preventDefault();
-		postBackward('http://megaman.student.rit.edu:3000', 0);
+		postBackward(CONFIG.url, 0);
 	});
 	
 	
