@@ -230,7 +230,7 @@ const controller = (() => {
 	joystick.addEventListener('mousemove', _.throttle((e) => {
 		e.preventDefault();
 		const deg = getJoystickDeg(joystick, e);
-		postTurn('http://megaman.student.rit.edu:3000', deg);
+		postTurn(CONFIG.url, deg);
 	}, THROTTLE_DELAY, {
 		leading: true,
 		trailing: false
@@ -239,7 +239,7 @@ const controller = (() => {
 	joystick.addEventListener('touchmove', _.throttle((e) => {
 		e.preventDefault();
 		const deg = getJoystickDeg(joystick, e);
-		postTurn('http://megaman.student.rit.edu:3000', deg);
+		postTurn(CONFIG.url, deg);
 	}, THROTTLE_DELAY, {
 		leading: true,
 		trailing: false
@@ -261,22 +261,22 @@ const controller = (() => {
 	// Forward Button
 	btnForward.addEventListener('touchstart', (e) => {
 		e.preventDefault();
-		postForward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+		postForward(CONFIG.url, DEFAULT_SPEED);
 	});
 	
 	btnForward.addEventListener('touchend', (e) => {
 		e.preventDefault();
-		postForward('http://megaman.student.rit.edu:3000', 0);
+		postForward(CONFIG.url, 0);
 	});
 	
 	btnForward.addEventListener('mousedown', (e) => {
 		e.preventDefault();
-		postForward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+		postForward(CONFIG.url, DEFAULT_SPEED);
 	});
 
 	btnForward.addEventListener('mouseup', (e) => {
 		e.preventDefault();
-		postForward('http://megaman.student.rit.edu:3000', 0);
+		postForward(CONFIG.url, 0);
 	});
 	
 	

@@ -3,6 +3,6 @@
  */
 const CONFIG = (() => {
 	return {
-		url: ""
+		url: "http://megaman.student.rit.edu:3000"
 	}
 })();
