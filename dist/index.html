@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <title>Lego Web Controller</title>
     <link type="text/css" rel="stylesheet" href="./webapp/style.css">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h1>Lego Web Controller</h1>
-
     <div class="ce-controller">
-        <input type="button" class="ce-btn-forward"/>
-        <input type="button" class="ce-btn-backward"/>
 
-        <canvas id="ce-joystick" width="500" height="500"></canvas>
+        <div class="ce-btn-column">
+            <button class="ce-btn ce-btn-forward">
+                <i class="fa fa-caret-up fa-5x" aria-hidden="true"></i>
+            </button>
+
+            <button class="ce-btn ce-btn-backward">
+                <i class="fa fa-caret-down fa-5x" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <canvas id="ce-joystick" width="300" height="300"></canvas>
     </div>
 
 </body>
 
 <script src="./webapp/js/app.js"></script>
-<script src="./dep/touchController/build/touchController.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/then-request/2.2.0/request.min.js"></script>
 <script src="./webapp/js/controller.js"></script>
 </html>

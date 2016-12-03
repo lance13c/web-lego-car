@@ -53,7 +53,7 @@ class VehicleService {
         dir >= 0;
 
     // Logic
-
+    
     return valid;
   }
 

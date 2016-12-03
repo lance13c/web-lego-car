@@ -1,3 +1,16 @@
-#ce-joystick {
-  width: 50%;
-  height: 50%; }
+.ce-controller {
+  padding: 20px 50px 0 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between; }
+  .ce-controller #ce-joystick {
+    flex: 0 0;
+    float: right; }
+  .ce-controller .ce-btn-column {
+    height: 100%;
+    display: flex;
+    flex-direction: column; }
+    .ce-controller .ce-btn-column .ce-btn {
+      margin-top: 10px;
+      width: 80px;
+      height: 100px; }
