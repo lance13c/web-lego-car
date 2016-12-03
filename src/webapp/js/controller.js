@@ -3,11 +3,6 @@
  */
 const controller = (() => {
 	
-	// let analogStick = new TouchController.AnalogStick(
-	// 	"ce-joystick",
-	// 	{left: 100, bottom: 5}
-	// );
-	
 	// Joystick Canvas Setup
 	const joystick = document.getElementById('ce-joystick');
 	let context = joystick.getContext('2d');
@@ -16,6 +11,12 @@ const controller = (() => {
 	const RADIUS_OFFSET = 5;
 	const radius = centerX - RADIUS_OFFSET;
 	const CENTER_OFFSET = joystick.width / 2;
+	const THROTTLE_DELAY = 100; // milli seconds
+	const DEFAULT_SPEED = 1;
+	
+	// Buttons Setup
+	const btnForward = document.getElementsByClassName("ce-btn-forward")[0];
+	const btnBackward = document.getElementsByClassName("ce-btn-backward")[0];
 	
 	// Background Draw Circle representing the analog surface
 	function drawCircle(context) {
@@ -28,7 +29,13 @@ const controller = (() => {
 		context.stroke();
 	}
 	
-	
+	/**
+	 * Gets the current mouse position.
+	 * Returns an object with an x, and y
+	 * @param canvasEl - The canvas element
+	 * @param event - The Mouse or Touch Event
+	 * @returns {{x: number, y: number}}
+	 */
 	function getMousePos(canvasEl, event) {
 		const rect = canvasEl.getBoundingClientRect();
 		
@@ -46,7 +53,6 @@ const controller = (() => {
 				};
 				break;
 		}
-		
 	}
 	
 	/**
@@ -81,7 +87,6 @@ const controller = (() => {
 		const adjacent = mousePos.x - CENTER_OFFSET;
 		const opposite = CENTER_OFFSET - mousePos.y;
 		const angle = getAngle(opposite, adjacent);
-		console.log("Center: " + CENTER_OFFSET);
 		return Math.floor(angle);
 	}
 	
@@ -132,16 +137,6 @@ const controller = (() => {
 		context.strokeStyle = '#20285a';
 		context.stroke();
 		
-		// Draw Horizontal X Axis
-		// context.beginPath();
-		// context.moveTo(CENTER_OFFSET, CENTER_OFFSET);
-		// context.moveTo(CENTER_OFFSET * 2, CENTER_OFFSET);
-		// context.fillStyle = 'purple';
-		// context.fill();
-		// context.lineWidth = 2;
-		// context.strokeStyle = '#20285a';
-		// context.stroke();
-		
 		// Draw Text
 		context.font = '20pt Calibri';
 		context.fillStyle = 'black';
@@ -173,12 +168,10 @@ const controller = (() => {
 	 * @param e - Mouse Event
 	 */
 	function onMouseEvent(e) {
-		const mousePos = getMousePos(joystick, e);
 		draw(context, joystick, e);
-		const deg = getJoystickDeg(joystick, e);
-		console.log(`X: ${mousePos.x}\nY: ${mousePos.y}`);
-		console.log(`Deg: ${deg}\n`);
 	}
+	
+	// REST FUNCTION CALLS
 	
 	/**
 	 * Posts an angle to the server
@@ -186,7 +179,9 @@ const controller = (() => {
 	 * @param angle - The angle to send with the post
 	 */
 	function postTurn(url, angle) {
-		request('POST', url, {
+		
+		console.log('turn');
+		request('POST', `${url}/vehicle/turn`, {
 			json: {
 				dir: angle
 			},
@@ -195,32 +190,126 @@ const controller = (() => {
 		});
 	}
 	
+	/**
+	 * Posts the speed the vehicle will move forward
+	 * @param url - The url to POST to
+	 * @param speed - The speed of the vehicle from 0-1
+	 */
+	function postForward(url, speed) {
+		
+		console.log('forward');
+		request('POST', `${url}/vehicle/forward`, {
+			json: {
+				speed: speed
+			},
+		}).done(function (res) {
+			console.log(res.getBody());
+		});
+	}
+	
+	/**
+	 * Posts the speed the vehicle will move backward
+	 * @param url - The url to POST to
+	 * @param speed - The speed of the vehicle from 0-1
+	 */
+	function postBackward(url, speed) {
+		
+		console.log('backward');
+		request('POST', `${url}/vehicle/backward`, {
+			json: {
+				speed: speed
+			},
+		}).done(function (res) {
+			console.log(res.getBody());
+		});
+	}
+	
 	// Event Listeners
-	joystick.addEventListener('mousemove', (e) => {
+	
+	// REST API Listeners
+	joystick.addEventListener('mousemove', _.throttle((e) => {
 		e.preventDefault();
 		const deg = getJoystickDeg(joystick, e);
-		postTurn('http://megaman.student.rit.edu:3000/vehicle/turn', deg);
+		postTurn('http://megaman.student.rit.edu:3000', deg);
+	}, THROTTLE_DELAY, {
+		leading: true,
+		trailing: false
+	}));
+	
+	joystick.addEventListener('touchmove', _.throttle((e) => {
+		e.preventDefault();
+		const deg = getJoystickDeg(joystick, e);
+		postTurn('http://megaman.student.rit.edu:3000', deg);
+	}, THROTTLE_DELAY, {
+		leading: true,
+		trailing: false
+	}));
+	
+	// Mouse Event Listeners
+	joystick.addEventListener('mousemove', (e) => {
+		e.preventDefault();
 		onMouseEvent(e);
 	});
 	
 	joystick.addEventListener('touchmove', (e) => {
-		const deg = getJoystickDeg(joystick, e);
-		
-		// Add lodash throttling
-		postTurn('http://megaman.student.rit.edu:3000/vehicle/turn', deg);
 		e.preventDefault();
 		onMouseEvent(e);
+	});
+	
+	// Button Event Listeners
+	
+	// Forward Button
+	btnForward.addEventListener('touchstart', (e) => {
+		e.preventDefault();
+		postForward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+	});
+	
+	btnForward.addEventListener('touchend', (e) => {
+		e.preventDefault();
+		postForward('http://megaman.student.rit.edu:3000', 0);
+	});
+	
+	btnForward.addEventListener('mousedown', (e) => {
+		e.preventDefault();
+		postForward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+	});
+
+	btnForward.addEventListener('mouseup', (e) => {
+		e.preventDefault();
+		postForward('http://megaman.student.rit.edu:3000', 0);
 	});
 	
 	
 	
 	
+	// Back Button
+	btnBackward.addEventListener('touchstart', (e) => {
+		e.preventDefault();
+		postBackward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+	});
+	
+	btnBackward.addEventListener('touchend', (e) => {
+		e.preventDefault();
+		postBackward('http://megaman.student.rit.edu:3000', 0);
+	});
+	
+	btnBackward.addEventListener('mousedown', (e) => {
+		e.preventDefault();
+		postBackward('http://megaman.student.rit.edu:3000', DEFAULT_SPEED);
+	});
+	
+	btnBackward.addEventListener('mouseup', (e) => {
+		e.preventDefault();
+		postBackward('http://megaman.student.rit.edu:3000', 0);
+	});
+	
+	
+	
 	// Init Draw
+	// Redraw
 	draw(context, joystick);
 	
 	
-	return {
-		//joystick: joystick
-	}
+	return {}
 })();
 	

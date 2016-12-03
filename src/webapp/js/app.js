@@ -4,7 +4,9 @@
 () => {
 
 
-    // Event Handelers
-
+    // Event Handlers
+		body.addEventListener((e) => {
+			e.preventDefault();
+		});
 
 }

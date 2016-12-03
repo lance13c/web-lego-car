@@ -1,3 +1,4 @@
+const _ = require('lodash');
 
 class VehicleService {
 
