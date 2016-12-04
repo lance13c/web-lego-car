@@ -26,6 +26,7 @@ function runRPIO(callback) {
 runRPIO(() => {
 	rpio.init({mapping: 'gpio'});
 	rpio.open(GPIO_FORWARD, rpio.INPUT, rpio.LOW);
+	console.log("GPIO Initalized");
 });
 
 
@@ -45,8 +46,10 @@ class VehicleService {
 	 runRPIO(() => {
 	   if (speed > 0) {
 		   rpio.write(GPIO_FORWARD, rpio.HIGH);
+		   console.log('Forward High');
      } else {
-	     rpio.write(GPIO_FORWARD, rpio.LOW)
+	     rpio.write(GPIO_FORWARD, rpio.LOW);
+		   console.log('Forward Low');
      }
 		 
    });
