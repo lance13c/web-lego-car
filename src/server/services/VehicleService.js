@@ -25,7 +25,7 @@ function runRPIO(callback) {
 // INIT GPIO
 runRPIO(() => {
 	rpio.init({mapping: 'gpio'});
-	rpio.open(GPIO_FORWARD, rpio.INPUT, rpio.LOW);
+	rpio.open(GPIO_FORWARD, rpio.OUTPUT, rpio.LOW);
 	console.log("GPIO Initalized");
 });
 
