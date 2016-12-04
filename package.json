@@ -10,7 +10,8 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.2"
+    "lodash": "^4.17.2",
+    "rpio": "^0.9.12"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
