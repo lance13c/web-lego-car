@@ -1,5 +1,34 @@
 const _ = require('lodash');
 
+
+let rpio = undefined;
+try {
+  rpio = require('rpio');
+} catch(e) {
+  console.log(e);
+}
+
+const GPIO_FORWARD = 12;  // GPIO Pin 12 - PWM
+const GPIO_BACKWARD = 13; // GPIO Pin 12 - PWM
+
+/**
+ * RPIO wrapper, only calls rpio commands if rpio exists
+ * Allow the webapp to work on machines with no GPIO pins
+ * @param callback - rpio call
+ */
+function runRPIO(callback) {
+  if (rpio) {
+    callback();
+  }
+}
+
+// INIT GPIO
+runRPIO(() => {
+	rpio.init({mapping: 'gpio'});
+	rpio.open(GPIO_FORWARD, rpio.INPUT, rpio.LOW);
+});
+
+
 class VehicleService {
 
 /**
@@ -13,6 +42,14 @@ class VehicleService {
                   speed >= 0;
 
     // Logic
+	 runRPIO(() => {
+	   if (speed > 0) {
+		   rpio.write(GPIO_FORWARD, rpio.HIGH);
+     } else {
+	     rpio.write(GPIO_FORWARD, rpio.LOW)
+     }
+		 
+   });
 
     return valid;
   }
@@ -76,4 +113,7 @@ class VehicleService {
   }
 }
 
+
 module.exports = new VehicleService();
+
+

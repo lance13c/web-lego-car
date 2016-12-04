@@ -2,9 +2,23 @@
 
 Controlling a lego car via a webpage controller
 
+## Change Keyboard to US keyboard layout 
+Fixes wrong keyboard symbols
+
+    sudo nano /etc/default/keyboard
+    
+Change the XKBLAYOUT propery to us:
+
+    XKBLAYOUT="us"
+    
+Reboot the RPI
+
+
 ## Install Node & Npm on RPI
-	curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+	curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 	sudo apt-POST install -y nodejs
+
+Note: Install version 6 not 7. GPIO library only works with versions < 7
 
 ## Install Remote Desktop
 
@@ -48,3 +62,10 @@ Sets the direction offset (Servo offset)
     request data: {
         offset: Num 0-180
     }
+    
+    
+    
+## FAQ
+
+**Problem** node gyp error TRACKER : error TRK0005
+**Solution:** http://stackoverflow.com/questions/33183161/node-gyp-error-tracker-error-trk0005-failed-to-locate-cl-exe-the-system-c/38387213
