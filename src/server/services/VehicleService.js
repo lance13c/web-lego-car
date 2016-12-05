@@ -14,28 +14,28 @@ console.log('Turn 0');
 
 setTimeout(() => {
 	runPy(() =>{
-		pyshell.send(120);
+		pyshell.send('120');
 		console.log('Turn 120');
 	});
 }, 2000);
 
 setTimeout(() => {
 	runPy(() =>{
-		pyshell.send(180);
+		pyshell.send('180');
 		console.log('Turn 180');
 	});
 }, 4000);
 
 setTimeout(() => {
 	runPy(() =>{
-		pyshell.send(0);
+		pyshell.send('0');
 		console.log('Turn 0');
 	});
 }, 6000);
 
 setTimeout(() => {
 	runPy(() =>{
-		pyshell.send(120);
+		pyshell.send('120');
 		console.log('Turn 120');
 	});
 }, 8000);
