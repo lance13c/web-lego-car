@@ -5,14 +5,18 @@ let sv1 = new PiServo(18);
 
 sv1.open().then(function(){
 		sv1.setDegree(20); // 0 - 180
+	  console.log('Turn 20');
 		setTimeout(() => {
 			sv1.setDegree(120); // 0 - 180
+			console.log('Turn 120');
 		}, 2000);
 		setTimeout(() => {
 			sv1.setDegree(180); // 0 - 180
+			console.log('Turn 180');
 		}, 4000);
 		setTimeout(() => {
 			sv1.setDegree(0); // 0 - 180
+			console.log('Turn 0');
 		}, 6000);
 	});
 
