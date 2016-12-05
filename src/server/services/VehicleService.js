@@ -18,8 +18,8 @@ try {
   console.log(e);
 }
 
-const GPIO_FORWARD = 12;  // GPIO Pin 12 - PWM
-const GPIO_BACKWARD = 13; // GPIO Pin 13 - PWM
+const GPIO_FORWARD = 12;  // GPIO Pin 12
+const GPIO_BACKWARD = 13; // GPIO Pin 13
 
 /**
  * RPIO wrapper, only calls rpio commands if rpio exists
@@ -39,6 +39,7 @@ runRPIO(() => {
 		mapping: 'gpio'
 	});
 	rpio.open(GPIO_FORWARD, rpio.OUTPUT, rpio.LOW);
+	rpio.open(GPIO_BACKWARD, rpio.OUTPUT, rpio.LOW);
 });
 
 // 	//Servo
@@ -96,6 +97,10 @@ runRPIO(() => {
 
 
 class VehicleService {
+	constructor(){
+		this.movingForward = false;
+		this.movingBackward = false;
+	}
 
 /**
  * Move the vehicle forwards
@@ -103,21 +108,32 @@ class VehicleService {
  * @returns {boolean}
  */
   forward(speed) {
+  	// Important, otherwise a short circuit will happen
+  	if (this.movingBackward) {
+		  // Set backwards to 0
+		  this.backward(0);
+	  }
+  	
     const valid = speed != undefined &&
                   speed <= 1 &&
                   speed >= 0;
 
     // Logic
-	 runRPIO(() => {
-	   if (speed > 0) {
-		   rpio.write(GPIO_FORWARD, rpio.HIGH);
-		   console.log('Forward High');
-     } else {
-	     rpio.write(GPIO_FORWARD, rpio.LOW);
-		   console.log('Forward Low');
-     }
+		if (valid) {
+			runRPIO(() => {
+				if (speed > 0) {
+					this.movingForward = true;
+					rpio.write(GPIO_FORWARD, rpio.HIGH);
+					console.log('Forward High');
+				} else {
+					this.movingForward = false;
+					rpio.write(GPIO_FORWARD, rpio.LOW);
+					console.log('Forward Low');
+				}
+				
+			});
+		}
 		 
-   });
 
     return valid;
   }
@@ -128,11 +144,30 @@ class VehicleService {
      * @returns {boolean}
      */
   backward(speed) {
+	    // Important, otherwise a short circuit will happen
+	    if (this.movingForward) {
+		    // Set backwards to 0
+		    this.forward(0);
+	    }
+  	
     const valid = speed != undefined &&
-        speed <= 1 &&
-        speed >= 0;
+      speed <= 1 &&
+      speed >= 0;
 
-    // Logic
+	    // Logic
+	    if (valid) {
+		    runRPIO(() => {
+			    if (speed > 0) {
+				    this.movingBackward = true;
+				    rpio.write(GPIO_BACKWARD, rpio.HIGH);
+				    console.log('Backward High');
+			    } else {
+				    this.movingBackward = false;
+				    rpio.write(GPIO_BACKWARD, rpio.LOW);
+				    console.log('Backward Low');
+			    }
+	      });
+	    }
 
     return valid;
   }
