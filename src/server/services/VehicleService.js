@@ -23,9 +23,9 @@ setTimeout(() => {
 	// 	pyshell.send('120');
 	// 	console.log('Turn 120');
 	// });
-	servoPromise.then(function(){
-		sv1.setDegree(0); // 0 - 180
-	});
+	// servoPromise.then(function(){
+	// 	sv1.setDegree(0); // 0 - 180
+	// });
 }, 2000);
 
 setTimeout(() => {
@@ -33,9 +33,9 @@ setTimeout(() => {
 	// 	pyshell.send('180');
 	// 	console.log('Turn 180');
 	// });
-	servoPromise.then(function(){
-		sv1.setDegree(20); // 0 - 180
-	});
+	// servoPromise.then(function(){
+	// 	sv1.setDegree(20); // 0 - 180
+	// });
 }, 4000);
 
 setTimeout(() => {
@@ -43,9 +43,9 @@ setTimeout(() => {
 	// 	pyshell.send('0');
 	// 	console.log('Turn 0');
 	// });
-	servoPromise.then(function(){
-		sv1.setDegree(60); // 0 - 180
-	});
+	// servoPromise.then(function(){
+	// 	sv1.setDegree(60); // 0 - 180
+	// });
 }, 6000);
 
 setTimeout(() => {
@@ -53,9 +53,9 @@ setTimeout(() => {
 	// 	pyshell.send('120');
 	// 	console.log('Turn 120');
 	// });
-	servoPromise.then(function(){
-		sv1.setDegree(80); // 0 - 180
-	});
+	// servoPromise.then(function(){
+	// 	sv1.setDegree(80); // 0 - 180
+	// });
 }, 8000);
 //
 // // pyshell.end(function (err) {
