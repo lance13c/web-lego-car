@@ -28,7 +28,7 @@ def turn(angle):
 
 # Loops awaiting turning inputs
 while (on == True):
-    data = input()              # either false or angle(integer)
+    data = raw_input()              # either false or angle(integer)
     data.replace("\n", "")      # Remove any newlines
     if (str(data) == "false"):
         on = False
