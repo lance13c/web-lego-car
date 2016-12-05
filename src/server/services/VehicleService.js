@@ -24,7 +24,10 @@ function runRPIO(callback) {
 
 // INIT GPIO
 runRPIO(() => {
-	rpio.init({mapping: 'gpio'});
+	rpio.init({
+		gpiomem: false,
+		mapping: 'gpio'
+	});
 	rpio.open(GPIO_FORWARD, rpio.OUTPUT, rpio.LOW);
 	
 	//Servo
