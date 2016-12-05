@@ -32,18 +32,6 @@ function runRPIO(callback) {
   }
 }
 
-/**
- * Able to run the python commands inside the callback
- * if pyshell isn't undefined
- * Keeps non rpi computer still able to run the webserver
- * @param callback - python call
- */
-function runPy(callback) {
-	if (pyshell) {
-		callback();
-	}
-}
-
 // INIT GPIO
 runRPIO(() => {
 	rpio.init({
@@ -51,59 +39,60 @@ runRPIO(() => {
 		mapping: 'gpio'
 	});
 	rpio.open(GPIO_FORWARD, rpio.OUTPUT, rpio.LOW);
-	
-	//Servo
-  const clockdiv = 64;
-  const TURN_PIN = 19;
-  const TURN_RANGE = 1024;
-		
-		rpio.open(TURN_PIN, rpio.PWM);
-	rpio.pwmSetClockDivider(clockdiv);
-	rpio.pwmSetRange(TURN_PIN, TURN_RANGE);
-	
-	let data = 0;
-	let direction = 1;
-	let times = 10;
-	let interval = 5;
-	
-	
-	let pulse = setInterval(function() {
-		rpio.pwmSetData(TURN_PIN, data);
-		if (data === 0) {
-			direction = 1;
-			if (times-- === 0) {
-				clearInterval(pulse);
-				//rpio.open(pin, rpio.INPUT);
-				return;
-			}
-		} else if (data === TURN_RANGE) {
-			direction = -1;
-		}
-		data += direction;
-	}, interval, data, direction, times);
-	
-	// rpio.pwmSetData(TURN_PIN, 512);
-	//
-	// setTimeout(() => {
-	// 	rpio.pwmSetData(TURN_PIN, 100);
-	// }, 2000);
-	//
-	// setTimeout(() => {
-	// 	rpio.pwmSetData(TURN_PIN, 512);
-	// }, 4000);
-	//
-	// setTimeout(() => {
-	// 	rpio.pwmSetData(TURN_PIN, 900);
-	// }, 6000);
-	
-	
-	
-	//rpio.pwmSetData(12, 512);
-	
-	//rpio.pwmSetData(12, 512);
-	
-	console.log("GPIO Initalized");
 });
+
+// 	//Servo
+//   const clockdiv = 64;
+//   const TURN_PIN = 19;
+//   const TURN_RANGE = 1024;
+//
+// 		rpio.open(TURN_PIN, rpio.PWM);
+// 	rpio.pwmSetClockDivider(clockdiv);
+// 	rpio.pwmSetRange(TURN_PIN, TURN_RANGE);
+//
+// 	let data = 0;
+// 	let direction = 1;
+// 	let times = 10;
+// 	let interval = 5;
+//
+//
+// 	let pulse = setInterval(function() {
+// 		rpio.pwmSetData(TURN_PIN, data);
+// 		if (data === 0) {
+// 			direction = 1;
+// 			if (times-- === 0) {
+// 				clearInterval(pulse);
+// 				//rpio.open(pin, rpio.INPUT);
+// 				return;
+// 			}
+// 		} else if (data === TURN_RANGE) {
+// 			direction = -1;
+// 		}
+// 		data += direction;
+// 	}, interval, data, direction, times);
+//
+// 	// rpio.pwmSetData(TURN_PIN, 512);
+// 	//
+// 	// setTimeout(() => {
+// 	// 	rpio.pwmSetData(TURN_PIN, 100);
+// 	// }, 2000);
+// 	//
+// 	// setTimeout(() => {
+// 	// 	rpio.pwmSetData(TURN_PIN, 512);
+// 	// }, 4000);
+// 	//
+// 	// setTimeout(() => {
+// 	// 	rpio.pwmSetData(TURN_PIN, 900);
+// 	// }, 6000);
+//
+//
+//
+// 	//rpio.pwmSetData(12, 512);
+//
+// 	//rpio.pwmSetData(12, 512);
+//
+// 	console.log("GPIO Initalized");
+// });
 
 
 class VehicleService {
