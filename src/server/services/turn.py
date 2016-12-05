@@ -37,7 +37,7 @@ def message(sid, data):
         update(int(data))
         print("Turned to: " + str(data))
     else:
-        print("Data no digit")
+        print("Data not digit")
         
     sio.emit('reply:', room=sid)
 

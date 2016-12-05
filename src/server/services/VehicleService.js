@@ -184,17 +184,19 @@ class VehicleService {
   }
 
   /**
-   * How much to turn the vehicle
+   * Turns the vehicle a certain amount of degrees
    * @param dir {Number} - 0-180 range, degrees to turn vehicle
    * @returns {boolean}
    */
   turn(dir) {
     const valid = dir != undefined &&
-        dir <= 180 &&
-        dir >= 0;
+                  dir <= 180       &&
+                  dir >= 0;
 
-    // Change direction to face correct way with motor
+    // Reverse the direction of the servo
+	  // Keeps UI
 	  dir = 180 - dir;
+	  
     // Logic
 	  if (valid) {
 	  	console.log('Turn Called');

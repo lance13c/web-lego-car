@@ -73,3 +73,15 @@ Sets the direction offset (Servo offset)
 
 **Problem** node gyp error TRACKER : error TRK0005
 **Solution:** http://stackoverflow.com/questions/33183161/node-gyp-error-tracker-error-trk0005-failed-to-locate-cl-exe-the-system-c/38387213
+
+## Extras
+
+### Get Npm Start to work on boot
+
+Edit rc.local
+
+    nano /etc/rc.local
+    
+Add commands under comments, before exit 0
+
+    cd /home/my/mode/project/folder && npm start
