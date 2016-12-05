@@ -36,5 +36,7 @@ while (on == True):
     print(data)
     if (str(data) == "false"):
         on = False
+    if (data == ""):
+        pass
     else:
         turn(int(data))
