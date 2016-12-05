@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const PythonShell = require('python-shell');
 let pyshell = new PythonShell('turn.py', {
-	mode: 'binary',
+	mode: 'text',
 	scriptPath: __dirname
 });
 
