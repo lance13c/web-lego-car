@@ -3,9 +3,7 @@ const PiServo = require('pi-servo');
 
 let sv1 = new PiServo(19);
 
-sv1.open().then(function(){
-	sv1.setDegree(100); // 0 - 180
-});
+let servoPromise = sv1.open();
 
 // const PythonShell = require('python-shell');
 // let pyshell = new PythonShell('turn.py', {
@@ -20,33 +18,45 @@ sv1.open().then(function(){
 // });
 // console.log('Turn 0');
 //
-// setTimeout(() => {
-// 	runPy(() =>{
-// 		pyshell.send('120');
-// 		console.log('Turn 120');
-// 	});
-// }, 2000);
-//
-// setTimeout(() => {
-// 	runPy(() =>{
-// 		pyshell.send('180');
-// 		console.log('Turn 180');
-// 	});
-// }, 4000);
-//
-// setTimeout(() => {
-// 	runPy(() =>{
-// 		pyshell.send('0');
-// 		console.log('Turn 0');
-// 	});
-// }, 6000);
-//
-// setTimeout(() => {
-// 	runPy(() =>{
-// 		pyshell.send('120');
-// 		console.log('Turn 120');
-// 	});
-// }, 8000);
+setTimeout(() => {
+	// runPy(() =>{
+	// 	pyshell.send('120');
+	// 	console.log('Turn 120');
+	// });
+	servoPromise.then(function(){
+		sv1.setDegree(0); // 0 - 180
+	});
+}, 2000);
+
+setTimeout(() => {
+	// runPy(() =>{
+	// 	pyshell.send('180');
+	// 	console.log('Turn 180');
+	// });
+	servoPromise.then(function(){
+		sv1.setDegree(120); // 0 - 180
+	});
+}, 4000);
+
+setTimeout(() => {
+	// runPy(() =>{
+	// 	pyshell.send('0');
+	// 	console.log('Turn 0');
+	// });
+	servoPromise.then(function(){
+		sv1.setDegree(180); // 0 - 180
+	});
+}, 6000);
+
+setTimeout(() => {
+	// runPy(() =>{
+	// 	pyshell.send('120');
+	// 	console.log('Turn 120');
+	// });
+	servoPromise.then(function(){
+		sv1.setDegree(80); // 0 - 180
+	});
+}, 8000);
 //
 // // pyshell.end(function (err) {
 // // 	if (err) {
