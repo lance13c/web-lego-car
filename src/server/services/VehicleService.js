@@ -26,6 +26,22 @@ function runRPIO(callback) {
 runRPIO(() => {
 	rpio.init({mapping: 'gpio'});
 	rpio.open(GPIO_FORWARD, rpio.OUTPUT, rpio.LOW);
+	
+	//Servo
+  const clockdiv = 64;
+  const TURN_PIN = 19;
+  const TURN_RANGE = 1024;
+  
+  
+	rpio.open(TURN_PIN, rpio.PWM);
+	rpio.pwmSetClockDivider(clockdiv);
+	rpio.pwmSetRange(TURN_PIN, TURN_RANGE);
+	
+	rpio.pwmSetData(12, 512);
+	//rpio.pwmSetData(12, 512);
+	
+	//rpio.pwmSetData(12, 512);
+	
 	console.log("GPIO Initalized");
 });
 
