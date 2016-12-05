@@ -161,7 +161,7 @@ class VehicleService {
     // Logic
 	  if (valid) {
 	  	console.log('Turn Called');
-	    socket.emit(serverConfig.TURN_EVENT, dir);
+	    socket.emit('turn', 120);
 	  } else {
 		  console.log('Turn Not Called');
 	  }
