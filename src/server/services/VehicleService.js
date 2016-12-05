@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const PiServo = require('pi-servo');
 
-let sv1 = new PiServo(13);
+let sv1 = new PiServo(18);
 
 sv1.open().then(function(){
 		sv1.setDegree(20); // 0 - 180
