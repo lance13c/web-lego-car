@@ -1,57 +1,65 @@
 const _ = require('lodash');
-const PythonShell = require('python-shell');
-let pyshell = new PythonShell('turn.py', {
-	mode: 'text',
-	scriptPath: __dirname
+const PiServo = require('pi-servo');
+
+let sv1 = new PiServo(19);
+
+sv1.open().then(function(){
+	sv1.setDegree(100); // 0 - 180
 });
 
-// sends a message to the Python script via stdin
-runPy(() =>{
-	pyshell.send(0);
-	console.log('Turn 0');
-});
-console.log('Turn 0');
-
-setTimeout(() => {
-	runPy(() =>{
-		pyshell.send('120');
-		console.log('Turn 120');
-	});
-}, 2000);
-
-setTimeout(() => {
-	runPy(() =>{
-		pyshell.send('180');
-		console.log('Turn 180');
-	});
-}, 4000);
-
-setTimeout(() => {
-	runPy(() =>{
-		pyshell.send('0');
-		console.log('Turn 0');
-	});
-}, 6000);
-
-setTimeout(() => {
-	runPy(() =>{
-		pyshell.send('120');
-		console.log('Turn 120');
-	});
-}, 8000);
-
-// pyshell.end(function (err) {
-// 	if (err) {
-// 		pyshell = undefined;
-// 		console.log(err);
-// 	}
-// 	console.log('finished');
+// const PythonShell = require('python-shell');
+// let pyshell = new PythonShell('turn.py', {
+// 	mode: 'text',
+// 	scriptPath: __dirname
 // });
-
-pyshell.on('message', function (message) {
-	// received a message sent from the Python script (a simple "print" statement)
-	console.log(message);
-});
+//
+// // sends a message to the Python script via stdin
+// runPy(() =>{
+// 	pyshell.send(0);
+// 	console.log('Turn 0');
+// });
+// console.log('Turn 0');
+//
+// setTimeout(() => {
+// 	runPy(() =>{
+// 		pyshell.send('120');
+// 		console.log('Turn 120');
+// 	});
+// }, 2000);
+//
+// setTimeout(() => {
+// 	runPy(() =>{
+// 		pyshell.send('180');
+// 		console.log('Turn 180');
+// 	});
+// }, 4000);
+//
+// setTimeout(() => {
+// 	runPy(() =>{
+// 		pyshell.send('0');
+// 		console.log('Turn 0');
+// 	});
+// }, 6000);
+//
+// setTimeout(() => {
+// 	runPy(() =>{
+// 		pyshell.send('120');
+// 		console.log('Turn 120');
+// 	});
+// }, 8000);
+//
+// // pyshell.end(function (err) {
+// // 	if (err) {
+// // 		pyshell = undefined;
+// // 		console.log(err);
+// // 	}
+// // 	console.log('finished');
+// // });
+//
+// pyshell.on('message', function (message) {
+// 	// received a message sent from the Python script (a simple "print" statement)
+// 	console.log(message);
+// });
 
 let rpio = undefined;
 try {
