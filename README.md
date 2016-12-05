@@ -25,6 +25,10 @@ Note: Install version 6 not 7. GPIO library only works with versions < 7
 [TightVCN](https://eltechs.com/3-ways-to-run-a-remote-desktop-on-raspberry-pi/)
 
 
+## Install Python Dev
+
+    sudo apt-get install python-dev
+
 ##API
 
 POST */vehicle/forward*

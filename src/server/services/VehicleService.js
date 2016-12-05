@@ -1,90 +1,15 @@
 const _ = require('lodash');
-const PiServo = require('pi-servo');
+const serverConfig = require('./serverConfig');
+const socket = require('socket.io-client')(serverConfig.SOCKET_URL);
 
-let sv1 = new PiServo(18);
+// Socket Setup
+socket.on('connect', () => {
+	console.log('Socket Connected');
+});
+socket.on('disconnect', () => {
+	console.log('Socket Disconnected');
+});
 
-sv1.open().then(function(){
-		sv1.setDegree(20); // 0 - 180
-	  console.log('Turn 20');
-		setTimeout(() => {
-			sv1.setDegree(120); // 0 - 180
-			console.log('Turn 120');
-		}, 2000);
-		setTimeout(() => {
-			sv1.setDegree(180); // 0 - 180
-			console.log('Turn 180');
-		}, 4000);
-		setTimeout(() => {
-			sv1.setDegree(0); // 0 - 180
-			console.log('Turn 0');
-		}, 6000);
-	});
-
-// const PythonShell = require('python-shell');
-// let pyshell = new PythonShell('turn.py', {
-// 	mode: 'text',
-// 	scriptPath: __dirname
-// });
-//
-// // sends a message to the Python script via stdin
-// runPy(() =>{
-// 	pyshell.send(0);
-// 	console.log('Turn 0');
-// });
-// console.log('Turn 0');
-//
-setTimeout(() => {
-	// runPy(() =>{
-	// 	pyshell.send('120');
-	// 	console.log('Turn 120');
-	// });
-	// servoPromise.then(function(){
-	// 	sv1.setDegree(0); // 0 - 180
-	// });
-}, 2000);
-
-setTimeout(() => {
-	// runPy(() =>{
-	// 	pyshell.send('180');
-	// 	console.log('Turn 180');
-	// });
-	// servoPromise.then(function(){
-	// 	sv1.setDegree(20); // 0 - 180
-	// });
-}, 4000);
-
-setTimeout(() => {
-	// runPy(() =>{
-	// 	pyshell.send('0');
-	// 	console.log('Turn 0');
-	// });
-	// servoPromise.then(function(){
-	// 	sv1.setDegree(60); // 0 - 180
-	// });
-}, 6000);
-
-setTimeout(() => {
-	// runPy(() =>{
-	// 	pyshell.send('120');
-	// 	console.log('Turn 120');
-	// });
-	// servoPromise.then(function(){
-	// 	sv1.setDegree(80); // 0 - 180
-	// });
-}, 8000);
-//
-// // pyshell.end(function (err) {
-// // 	if (err) {
-// // 		pyshell = undefined;
-// // 		console.log(err);
-// // 	}
-// // 	console.log('finished');
-// // });
-//
-// pyshell.on('message', function (message) {
-// 	// received a message sent from the Python script (a simple "print" statement)
-// 	console.log(message);
-// });
 
 let rpio = undefined;
 try {
@@ -245,8 +170,11 @@ class VehicleService {
         dir >= 0;
 
     // Logic
-    
-    return valid;
+	  if (valid) {
+	    socket.emit(serverConfig.TURN_EVENT, dir);
+	  }
+	
+	  return valid;
   }
 
   /**
