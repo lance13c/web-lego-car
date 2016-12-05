@@ -34,7 +34,7 @@ setTimeout(() => {
 	// 	console.log('Turn 180');
 	// });
 	servoPromise.then(function(){
-		sv1.setDegree(120); // 0 - 180
+		sv1.setDegree(20); // 0 - 180
 	});
 }, 4000);
 
@@ -44,7 +44,7 @@ setTimeout(() => {
 	// 	console.log('Turn 0');
 	// });
 	servoPromise.then(function(){
-		sv1.setDegree(180); // 0 - 180
+		sv1.setDegree(60); // 0 - 180
 	});
 }, 6000);
 
