@@ -40,7 +40,19 @@ runRPIO(() => {
 	rpio.pwmSetClockDivider(clockdiv);
 	rpio.pwmSetRange(TURN_PIN, TURN_RANGE);
 	
-	rpio.pwmSetData(12, 512);
+	rpio.pwmSetData(TURN_PIN, 512);
+	
+	setTimeout(() => {
+		rpio.pwmSetData(TURN_PIN, 100);
+	}, 2000);
+	
+	setTimeout(() => {
+		rpio.pwmSetData(TURN_PIN, 512);
+	}, 4000);
+	
+	setTimeout(() => {
+		rpio.pwmSetData(TURN_PIN, 900);
+	}, 6000);
 	//rpio.pwmSetData(12, 512);
 	
 	//rpio.pwmSetData(12, 512);
