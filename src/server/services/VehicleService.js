@@ -1,9 +1,20 @@
 const _ = require('lodash');
 const PiServo = require('pi-servo');
 
-let sv1 = new PiServo(19);
+let sv1 = new PiServo(13);
 
-let servoPromise = sv1.open();
+sv1.open().then(function(){
+		sv1.setDegree(20); // 0 - 180
+		setTimeout(() => {
+			sv1.setDegree(120); // 0 - 180
+		}, 2000);
+		setTimeout(() => {
+			sv1.setDegree(180); // 0 - 180
+		}, 4000);
+		setTimeout(() => {
+			sv1.setDegree(0); // 0 - 180
+		}, 6000);
+	});
 
 // const PythonShell = require('python-shell');
 // let pyshell = new PythonShell('turn.py', {
