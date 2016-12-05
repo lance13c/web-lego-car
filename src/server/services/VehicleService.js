@@ -26,6 +26,20 @@ setTimeout(() => {
 	});
 }, 4000);
 
+setTimeout(() => {
+	runPy(() =>{
+		pyshell.send(0);
+		console.log('Turn 0');
+	});
+}, 6000);
+
+setTimeout(() => {
+	runPy(() =>{
+		pyshell.send(120);
+		console.log('Turn 120');
+	});
+}, 8000);
+
 // pyshell.end(function (err) {
 // 	if (err) {
 // 		pyshell = undefined;
