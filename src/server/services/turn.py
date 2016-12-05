@@ -30,13 +30,16 @@ def turn(angle):
 
 # Loops awaiting turning inputs
 while (on == True):
-    data = raw_input()              # either false or angle(integer)
-    print("DATA: " + data)
-    data.replace("\n", "")      # Remove any newlines
-    print(data)
-    if (str(data) == "false"):
-        on = False
-    if (data == ""):
-        pass
-    else:
-        turn(int(data))
+    try:
+        data = raw_input()              # either false or angle(integer)
+        print("DATA: " + data)
+        data.replace("\n", "")      # Remove any newlines
+        print(data)
+        if (str(data) == "false"):
+            on = False
+        if (data == ""):
+            pass
+        else:
+            turn(int(data))
+    except EOFError:
+        print("EOFErrror Hit")
