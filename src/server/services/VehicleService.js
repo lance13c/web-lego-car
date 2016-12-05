@@ -34,9 +34,8 @@ runRPIO(() => {
   const clockdiv = 64;
   const TURN_PIN = 19;
   const TURN_RANGE = 1024;
-  
-  
-	rpio.open(TURN_PIN, rpio.PWM);
+		
+		rpio.open(TURN_PIN, rpio.PWM);
 	rpio.pwmSetClockDivider(clockdiv);
 	rpio.pwmSetRange(TURN_PIN, TURN_RANGE);
 	
@@ -44,6 +43,7 @@ runRPIO(() => {
 	let direction = 1;
 	let times = 10;
 	let interval = 5;
+	
 	
 	let pulse = setInterval(function() {
 		rpio.pwmSetData(TURN_PIN, data);
@@ -54,7 +54,7 @@ runRPIO(() => {
 				//rpio.open(pin, rpio.INPUT);
 				return;
 			}
-		} else if (data === max) {
+		} else if (data === TURN_RANGE) {
 			direction = -1;
 		}
 		data += direction;
