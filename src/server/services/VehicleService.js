@@ -40,19 +40,42 @@ runRPIO(() => {
 	rpio.pwmSetClockDivider(clockdiv);
 	rpio.pwmSetRange(TURN_PIN, TURN_RANGE);
 	
-	rpio.pwmSetData(TURN_PIN, 512);
+	let data = 0;
+	let direction = 1;
+	let times = 10;
+	let interval = 5;
 	
-	setTimeout(() => {
-		rpio.pwmSetData(TURN_PIN, 100);
-	}, 2000);
+	let pulse = setInterval(function() {
+		rpio.pwmSetData(TURN_PIN, data);
+		if (data === 0) {
+			direction = 1;
+			if (times-- === 0) {
+				clearInterval(pulse);
+				//rpio.open(pin, rpio.INPUT);
+				return;
+			}
+		} else if (data === max) {
+			direction = -1;
+		}
+		data += direction;
+	}, interval, data, direction, times);
 	
-	setTimeout(() => {
-		rpio.pwmSetData(TURN_PIN, 512);
-	}, 4000);
+	// rpio.pwmSetData(TURN_PIN, 512);
+	//
+	// setTimeout(() => {
+	// 	rpio.pwmSetData(TURN_PIN, 100);
+	// }, 2000);
+	//
+	// setTimeout(() => {
+	// 	rpio.pwmSetData(TURN_PIN, 512);
+	// }, 4000);
+	//
+	// setTimeout(() => {
+	// 	rpio.pwmSetData(TURN_PIN, 900);
+	// }, 6000);
 	
-	setTimeout(() => {
-		rpio.pwmSetData(TURN_PIN, 900);
-	}, 6000);
+	
+	
 	//rpio.pwmSetData(12, 512);
 	
 	//rpio.pwmSetData(12, 512);
