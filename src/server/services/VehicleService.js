@@ -193,6 +193,8 @@ class VehicleService {
         dir <= 180 &&
         dir >= 0;
 
+    // Change direction to face correct way with motor
+	  dir = 180 - dir;
     // Logic
 	  if (valid) {
 	  	console.log('Turn Called');
