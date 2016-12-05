@@ -31,7 +31,7 @@ def turn(angle):
 # Loops awaiting turning inputs
 while (on == True):
     try:
-        data = raw_input()              # either false or angle(integer)
+        data = sys.stdin.readline()              # either false or angle(integer)
         print("DATA: " + data)
         data.replace("\n", "")      # Remove any newlines
         print(data)
@@ -42,5 +42,4 @@ while (on == True):
         else:
             turn(int(data))
     except EOFError:
-        pass
-        #print("EOFErrror Hit")
+        print("EOFErrror Hit")
