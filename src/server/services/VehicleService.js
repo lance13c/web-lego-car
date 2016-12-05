@@ -19,7 +19,7 @@ try {
 }
 
 const GPIO_FORWARD = 12;  // GPIO Pin 12 - PWM
-const GPIO_BACKWARD = 13; // GPIO Pin 12 - PWM
+const GPIO_BACKWARD = 13; // GPIO Pin 13 - PWM
 
 /**
  * RPIO wrapper, only calls rpio commands if rpio exists
