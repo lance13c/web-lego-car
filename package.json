@@ -11,6 +11,7 @@
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.2",
+    "python-shell": "^0.4.0",
     "rpio": "^0.9.12"
   },
   "devDependencies": {

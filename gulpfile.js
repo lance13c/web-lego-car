@@ -8,7 +8,7 @@ const sass = require('gulp-sass');
 const PATHS = {
     sass: './src/webapp/assets/style.scss',
     index: './src/index.*',
-    server: './src/server/**/*.js',
+    server: './src/server/**/*.*',
 	  dependencies: './dep/**/*.*',
     assets: './src/webapp/assets/**/*.*',
 	  webapp_js: './src/webapp/js/**/*.js',

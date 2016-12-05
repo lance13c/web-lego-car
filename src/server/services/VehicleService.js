@@ -1,5 +1,42 @@
 const _ = require('lodash');
+const PythonShell = require('python-shell');
+const path = require('path');
+const appDir = path.dirname(require.main.filename);
+let pyshell = new PythonShell(appDir + '/server/pyscripts/turn.py');
 
+// sends a message to the Python script via stdin
+runPy(() =>{
+	pyshell.send(0);
+	console.log('Turn 0');
+});
+console.log('Turn 0');
+
+setTimeout(() => {
+	runPy(() =>{
+		pyshell.send(120);
+		console.log('Turn 120');
+	});
+}, 2000);
+
+setTimeout(() => {
+	runPy(() =>{
+		pyshell.send(180);
+		console.log('Turn 180');
+	});
+}, 4000);
+
+pyshell.end(function (err) {
+	if (err) {
+		pyshell = undefined;
+		console.log(err);
+	}
+	console.log('finished');
+});
+
+pyshell.on('message', function (message) {
+	// received a message sent from the Python script (a simple "print" statement)
+	console.log(message);
+});
 
 let rpio = undefined;
 try {
@@ -20,6 +57,18 @@ function runRPIO(callback) {
   if (rpio) {
     callback();
   }
+}
+
+/**
+ * Able to run the python commands inside the callback
+ * if pyshell isn't undefined
+ * Keeps non rpi computer still able to run the webserver
+ * @param callback - python call
+ */
+function runPy(callback) {
+	if (pyshell) {
+		callback();
+	}
 }
 
 // INIT GPIO
