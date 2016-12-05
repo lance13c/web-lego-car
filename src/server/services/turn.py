@@ -42,4 +42,5 @@ while (on == True):
         else:
             turn(int(data))
     except EOFError:
-        print("EOFErrror Hit")
+        pass
+        #print("EOFErrror Hit")

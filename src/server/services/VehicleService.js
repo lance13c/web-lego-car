@@ -26,13 +26,13 @@ setTimeout(() => {
 	});
 }, 4000);
 
-pyshell.end(function (err) {
-	if (err) {
-		pyshell = undefined;
-		console.log(err);
-	}
-	console.log('finished');
-});
+// pyshell.end(function (err) {
+// 	if (err) {
+// 		pyshell = undefined;
+// 		console.log(err);
+// 	}
+// 	console.log('finished');
+// });
 
 pyshell.on('message', function (message) {
 	// received a message sent from the Python script (a simple "print" statement)
