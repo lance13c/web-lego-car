@@ -1,3 +1,3 @@
 #!/bin/bash
-nohup python gpio_test.py &
-nohup node index.js &
+nohup python ./dist/server/services/turn.py &
+nohup npm start &
