@@ -1,7 +1,5 @@
 const _ = require('lodash');
 const PythonShell = require('python-shell');
-const path = require('path');
-const appDir = path.dirname(require.main.filename);
 let pyshell = new PythonShell(__dirname + '/pyscripts/turn.py');
 
 // sends a message to the Python script via stdin
