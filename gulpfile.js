@@ -62,4 +62,5 @@ gulp.task('watch', function () {
     gulp.watch(PATHS.dependencies, ['dependencies']);
 });
 
-gulp.task('default', ['sass', 'index', 'webapp_js', 'assets', 'server', 'dependencies', 'watch']);
+gulp.task('default', ['sass', 'index', 'webapp_js', 'assets', 'server', 'dependencies']);
+
