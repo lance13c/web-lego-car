@@ -1,4 +1,4 @@
-# Reused code from https://github.com/miguelgrinberg/python-socketio
+# Reused some code from https://github.com/miguelgrinberg/python-socketio
 import socketio
 import RPi.GPIO as GPIO
 import eventlet
