@@ -83,9 +83,7 @@ In the terminal npm start was entered into you should see output logs of what
 the webapp is telling the server to do (the data it is receiving). 
 
 
-### Install Remote Desktop (optional)
 
-[TightVCN](https://eltechs.com/3-ways-to-run-a-remote-desktop-on-raspberry-pi/)
 
 
 ### Setup for RPI (Documentation Not Complete)
@@ -121,7 +119,9 @@ kill.sh will stop both webservers.
 
     bash ./kill
     
-Reboot the RPI
+#### Install Remote Desktop (optional)
+
+[TightVCN](https://eltechs.com/3-ways-to-run-a-remote-desktop-on-raspberry-pi/)
 
 
 
