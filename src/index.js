@@ -8,12 +8,19 @@ const VehicleService = require('./server/services/VehicleService');
 const app = express();
 const PORT = 3000;
 
+// Turn data received into json
 app.use( bodyParser.json() );
+
+// Host the dist folder as static content
 app.use( express.static('dist'));
 
+
+// Host index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+
+// Post Endpoints
 
 app.post('/vehicle/forward', (req, res) => {
     console.log("Forward:");
@@ -50,6 +57,7 @@ app.post('/vehicle/turnoffset', (req, res) => {
     res.send({complete: valid});
 });
 
+// Start the webserver
 app.listen(PORT, () => {
     console.log(`Listening Port ${PORT}`);
 });
