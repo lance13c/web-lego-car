@@ -1,10 +1,10 @@
 # web-lego-car
 
 Controlling a lego car via a webpage controller
+####Demo: https://youtu.be/NGugRwT2zvg
 
 ![Finished Vehicle Image](https://raw.githubusercontent.com/lance13c/web-lego-car/master/images/0.jpg)
 
-####Demo: https://youtu.be/NGugRwT2zvg
 
 ## Setup for Development
 
