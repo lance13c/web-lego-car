@@ -127,6 +127,8 @@ class VehicleService {
   stop() {
 
     // Logic
+		rpio.write(GPIO_FORWARD, rpio.LOW);
+		rpio.write(GPIO_BACKWARD, rpio.LOW);
 
     return true;
   }
