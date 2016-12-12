@@ -1,4 +1,5 @@
 # web-lego-car
+**Contributors:** Dominic Cicilio
 
 Controlling a lego car via a webpage controller
 ####Demo: https://youtu.be/NGugRwT2zvg
