@@ -2,7 +2,7 @@ const _ = require('lodash');
 const serverConfig = require('./serverConfig');
 const socket = require('socket.io-client')(serverConfig.SOCKET_URL);
 
-// Socket Setup
+// Socket.io Setup
 socket.on('connect', () => {
 	console.log('Socket Connected');
 });
@@ -10,7 +10,7 @@ socket.on('disconnect', () => {
 	console.log('Socket Disconnected');
 });
 
-
+// Setup rpio so the project able to run on machines that don't have GPIO pins.
 let rpio = undefined;
 try {
   rpio = require('rpio');
@@ -121,6 +121,7 @@ class VehicleService {
 
 /**
  * Stops the vehicle
+ * No need, obsolete.
  * @returns {boolean}
  */
   stop() {
@@ -159,6 +160,7 @@ class VehicleService {
    * Offset the direction of the wheels
    * If the wheels at 0degs are 20degs off from being
    * horizontally aligned, offset the wheels so they are aligned.
+   * No need, obsolete.
    * @param offset - {Number} - 0-180 the value to offset
    * @returns {boolean}
    */
