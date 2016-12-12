@@ -7,6 +7,7 @@ Controlling a lego car via a webpage controller
 ## Setup for Development
 
 ### Install Node Version 6 & Npm
+Will not work with Node Version > 6.x
 
 Download: https://nodejs.org/en/
 
