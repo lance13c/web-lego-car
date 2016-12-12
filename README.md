@@ -23,7 +23,7 @@ If git is not recognized download git [here](https://git-scm.com/download) or do
 ### Setup config files
 
 **Note this only works your computer has a public url. If it does not, the server will
-still run but will throw errors when trying the make the REST calls.**
+still run but will throw errors when trying to make the REST calls.**
 
 Find the project folder.
 
