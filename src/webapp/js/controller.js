@@ -82,6 +82,12 @@ const controller = (() => {
 		
 	}
 	
+	/**
+	 * Gets the joystick angle in degrees
+	 * @param canvasEl - The canvas element
+	 * @param mouseEvent - A mouse event
+	 * @returns {number} - The angle of the joystick in degrees
+	 */
 	function getJoystickDeg(canvasEl, mouseEvent) {
 		const mousePos = getMousePos(canvasEl, mouseEvent);
 		const adjacent = mousePos.x - CENTER_OFFSET;
@@ -144,6 +150,12 @@ const controller = (() => {
 		context.fillText(angle, CENTER_OFFSET + TEXT_OFFSET, CENTER_OFFSET - TEXT_OFFSET);
 	}
 	
+	/**
+	 * Draws all the shapes that make up the joystick
+	 * @param context - canvas context
+	 * @param canvasEl - The canvas element
+	 * @param mouseEvent - A mouse event
+	 */
 	function draw(context, canvasEl, mouseEvent) {
 		// Clears the canvas
 		context.clearRect(0, 0, canvasEl.width, canvasEl.height);
@@ -226,7 +238,7 @@ const controller = (() => {
 	
 	// Event Listeners
 	
-	// REST API Listeners
+	// Transmitting REST API Event Listeners
 	joystick.addEventListener('mousemove', _.throttle((e) => {
 		e.preventDefault();
 		const deg = getJoystickDeg(joystick, e);
@@ -280,8 +292,6 @@ const controller = (() => {
 	});
 	
 	
-	
-	
 	// Back Button
 	btnBackward.addEventListener('touchstart', (e) => {
 		e.preventDefault();
@@ -304,11 +314,9 @@ const controller = (() => {
 	});
 	
 	
-	
 	// Init Draw
 	// Redraw
 	draw(context, joystick);
-	
 	
 	return {}
 })();
