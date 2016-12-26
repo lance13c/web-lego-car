@@ -7,6 +7,10 @@ Controlling a lego car via a webpage controller
 ![Finished Vehicle Image](https://raw.githubusercontent.com/lance13c/web-lego-car/master/images/0.jpg)
 
 
+##High Level Design
+
+![High Level Design Image](https://raw.githubusercontent.com/lance13c/web-lego-car/master/images/HLD.jpg)
+
 ## Setup for Development
 
 ### Install Node Version 6 & Npm
@@ -25,14 +29,14 @@ If git is not recognized download git [here](https://git-scm.com/download) or do
 
 ### Setup config files
 
-**Note this only works your computer has a public url. If it does not, the server will
+**Note this only works if your computer has a public url. If it does not, the server will
 still run but will throw errors when trying to make the REST calls.**
 
 Find the project folder.
 
     cd C:/users/you/folder/path/web-lego-car/
     
-Got into **config.js**
+Go into **config.js**
     
     nano C:/users/you/folder/path/web-lego-car/src/webapp/js/config.js
     
@@ -96,7 +100,7 @@ Fixes wrong keyboard symbols
 
     sudo nano /etc/default/keyboard
     
-Change the XKBLAYOUT propery to us:
+Change the XKBLAYOUT property to _us_:
 
     XKBLAYOUT="us"
     
