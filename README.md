@@ -9,7 +9,7 @@ Controlling a lego car via a webpage controller
 
 ##High Level Design
 
-![High Level Design Image](https://raw.githubusercontent.com/lance13c/web-lego-car/master/images/HLD.jpg)
+![High Level Design Image](https://raw.githubusercontent.com/lance13c/web-lego-car/master/images/HLD.png)
 
 ## Setup for Development
 
